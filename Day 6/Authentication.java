@@ -10,7 +10,11 @@
 
 import java.util.*;
 
-
+class InputInvalidException extends Exception{
+    public InputInvalidException(String message){
+        super(message);
+    }
+}
 public class Authentication {
     public static void main(String[] args) throws Exception {
         String username, password;
@@ -20,34 +24,34 @@ public class Authentication {
             System.out.print("Enter username : ");
             username = scanner.nextLine();
             if (username.length()<6 || username.length()>15 )
-                throw new InputMismatchException("Username must be of length 6-15 characters");
+                throw new InputInvalidException("Username must be of length 6-15 characters");
             if (!Character.isUpperCase(username.charAt(0)))
-                throw new InputMismatchException("Username must start with an uppercase English alphabet A to Z");
+                throw new InputInvalidException("Username must start with an uppercase English alphabet A to Z");
             for (int i=0;i<username.length();i++)
                 if (username.charAt(i) == ' ' || username.charAt(i) == ')' || username.charAt(i) == '(')
-                    throw new InputMismatchException("Username cannot contain parentheses or whitespaces");
+                    throw new InputInvalidException("Username cannot contain parentheses or whitespaces");
             System.out.print("Enter password : ");
             password = scanner.nextLine();
             if (password.length()<8 || password.length()>256)
-                throw new InputMismatchException("Password must not be shorter than 8 characters but must not exceed 256");
+                throw new InputInvalidException("Password must not be shorter than 8 characters but must not exceed 256");
             for (int i=0;i<password.length();i++)
                 if (password.charAt(i)==' ' || password.charAt(i)==')' || password.charAt(i)=='(')
-                    throw new InputMismatchException("Password cannot contain parentheses or whitespaces");
+                    throw new InputInvalidException("Password cannot contain parentheses or whitespaces");
             for (int i=0;i<password.length();i++){
                 if(password.charAt(i)==username.charAt(j))
                     j++;
                 else
                     j=0;
                 if(j==username.length()){
-                    throw new InputMismatchException("Password cannot contain the user name");
+                    throw new InputInvalidException("Password cannot contain the user name");
                 }
             }
             if (password.equals(username))
-                throw new InputMismatchException("Password cannot same as the username");
+                throw new InputInvalidException("Password cannot same as the username");
             System.out.println("Username and Password is valid");
         }
-        catch (InputMismatchException imme){
-                System.out.println(imme);
+        catch (InputInvalidException ie){
+                System.out.println(ie);
         }
     }
 }
