@@ -16,6 +16,7 @@ class GenericPrintArray <T> {
 
 
 
+<<<<<<< HEAD
 //public class GenericPrintArray {
 //    public <T> void printArray(T[] array){
 //        for(int i= array.length-1;i>=0;i--){
@@ -28,3 +29,5 @@ class GenericPrintArray <T> {
 //        arr.printArray(new String[] {"language","programming","Java"});
 //    }
 //}
+=======
+>>>>>>> 53be90ad241d9fd15f0c694e42ad05290077637e
