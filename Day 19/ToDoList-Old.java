@@ -30,14 +30,14 @@ public class ToDoList {
     }
 
     public ArrayList<String> removeItemsFromTheTodoList(String item) {
-
+        notes3.add(item);
         notes2.remove(item);
         return notes2;
 
     }
 
     public ArrayList<String> unRemoveItemsFromTheToDoList() {
-
+        System.out.println(notes3);
         return notes3;
     }
 
@@ -67,5 +67,4 @@ public class ToDoList {
         }
         return flag;
     }
-
 }
