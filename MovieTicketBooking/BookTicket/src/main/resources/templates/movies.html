@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Book Ticket/Movies</title>
+  <link href="movies.css" rel="stylesheet" type="text/css">
+</head>
+
+<!--<h1>Movies List</h1>-->
+<!--<span th:text="${message}"/>-->
+<div class="navigation">
+  <a href="/">Home</a>
+  <a th:href="@{/{userName}/myBookings (userName=${userName})}">My Bookings</a>
+  <a class="active" href="#" style="float:right" th:text="${userName}"></a>
+  <a href="/">Logout</a>
+</div>
+<div class="container">
+  <div class="row">
+    <h2>Select Movie(s)</h2>
+  </div>
+  <table>
+    <thead>
+    <tr>
+      <th>Movie</th>
+      <th>Genre</th>
+      <th>Released Date</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="movie: ${movies}">
+      <td th:text="${movie.movieName}"></td>
+      <td th:text="${movie.genre}"></td>
+      <td th:text="${movie.releaseDate}"></td>
+
+      <td>
+        <button> <a class="btn btn-success" th:href="@{/{userName}/movie/{id} (userName=${userName},id=${movie.id})}">Book Tickets</a> </button>
+      </td>
+    </tr>
+    </tbody>
+
+  </table>
+</div>
+</body>
+</html>
